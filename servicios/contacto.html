@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- Mirrored from emprebit.com/contacto.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 27 Sep 2020 02:39:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <!-- metas -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="En esta sección econtrara diversos metodos para poder contactarse con nosotros, como telefonos, emails de contacto y redes sociales de emprebit">
+    <meta name="author" content="Emprebit - Diseño y Desarollo web">
+    <meta name="Keywords" content="Emprebit, servicio de diseño web, diseño páginas web, diseño web precios, diseño web economico, diseño web barato, diseño de sitios web, diseño web argentina, desarrollo web, diseño web profesional, diseño web buenos aires, diseño web en wordpress, diseño de tienda online ecommerce." />
+
+    <!-- title  -->
+    <title>Contacto - Emprebit</title>
+
+    <script src="component/jquery/jquery-3.2.1.min.js"></script>
+	<script>
+	$(document).ready(function (e){
+		$("#frmContact").on('submit',(function(e){
+			e.preventDefault();
+			$("#mail-status").hide();
+			$('#send-message').hide();
+			$('#loader-icon').show();
+			$.ajax({
+				url: "contact.php",
+				type: "POST",
+				dataType:'json',
+				data: {
+				"name":$('input[name="name"]').val(),
+				"email":$('input[name="email"]').val(),
+				"phone":$('input[name="phone"]').val(),
+				"content":$('textarea[name="content"]').val(),
+				"g-recaptcha-response":$('textarea[id="g-recaptcha-response"]').val()},				
+				success: function(response){
+				$("#mail-status").show();
+				$('#loader-icon').hide();
+				if(response.type == "error") {
+					$('#send-message').show();
+					$("#mail-status").attr("class","error");				
+				} else if(response.type == "message"){
+					$('#send-message').hide();
+					$("#mail-status").attr("class","success");							
+				}
+				$("#mail-status").php(response.text);	
+				},
+				error: function(){} 
+			});
+		}));
+	});
+	</script>
+	<style>
+		#message { padding: 0px 40px 0px 0px; }
+		#mail-status {
+			padding: 12px 20px;
+			width: 100%;
+			display:none; 
+			font-size: 1em;
+			color: rgb(40, 40, 40);
+		}
+	  	.error{background-color: #fb9b28;margin-bottom: 15px;}
+	  	.success{background-color: #87c500;}
+	
+	</style>
+
+	<script src='../www.google.com/recaptcha/api.js'></script>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="img/logos/favicon.png" />
+    <link rel="apple-touch-icon" href="img/logos/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/logos/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/logos/apple-touch-icon-114x114.png" />
+
+    <!-- plugins -->
+    <link rel="stylesheet" href="css/plugins.css" />
+
+    <!-- core style css -->
+    <link href="css/styles.css" rel="stylesheet" id="colors" />
+</head>
+<body>
+
+    <!-- start page loading -->
+    <div id="preloader">
+        <div class="row loader">
+            <div class="loader-icon"></div>
+        </div>
+    </div>
+    <!-- end page loading -->
+
+    <!-- start main-wrapper section -->
+    <div class="main-wrapper">
+
+        <!-- start header -->
+        <header class="header onepage-header" data-scroll-index="0">
+            <div class="container">
+                <div class="menu_area alt-font">
+                    <!-- start navbar -->
+                    <nav class="navbar navbar-expand-lg no-padding">
+                        <div class="container sm-position-relative">
+                            <div class="navbar-header navbar-header-custom">
+                                <!-- start logo -->
+                                <a href="/" class="navbar-brand white-logo"><img id="logo" src="img/logos/logo-emprebit.png" alt="logo"></a>
+                                <!-- end logo -->
+                            </div>
+                            <div class="navbar-toggler"></div>
+                            <ul class="navbar-nav ml-auto" id="nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">Inicio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="nosotros.html">Nosotros</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="servicios.html">Servicios</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="trabajos.html">Trabajos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contacto.html">Contacto</a>
+                                </li>
+                            </ul>
+                            <div class="margin-20px-left sm-display-none">
+                                <a class="butn white" href="http://api.whatsapp.com/send?phone=5491163083711" alt="icono de whawsapp" target="_blank"><i class="fab fa-whatsapp"></i> ¿Hablamos?</a>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- end navbar  -->
+                </div>
+
+            </div>
+
+        </header>
+        <!-- end header -->
+
+        <!-- start page title section -->
+        <section class="page-title-section bg-img cover-background theme-overlay" data-overlay-dark="9" data-background="img/banner/page-title.jpg">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>CONTACTESE CON NOSOTROS</h1>
+                        <p class="text-white font-size22 md-font-size20 xs-font-size18">Déjenos ser su guía y crezca con nosotros en Internet</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- end page title section -->
+
+         <!-- start contact form -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 wow fadeIn">
+
+                        <div class="section-heading">
+                            <h3>¡HABLEMOS!</h3>
+                            <p class="width-55 sm-width-75 xs-width-95">Si tiene alguna pregunta o desea que le coticemos un presupuesto, por favor use los siguientes medios para contactarse con nosotros.</p>
+                        </div>
+                        <div id="message">
+                        <form id="frmContact" action="#" method="POST" novalidate="novalidate" class="mailform off2">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input type="text" id="name" name="name" placeholder="Nombre *" title="por favor ingresa tu nombre" class="required" aria-required="true" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" id="phone" name="phone" placeholder="Teléfono *" title="Por favor ingresa algún teléfono" class="required phone" aria-required="true" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" id="email" name="email" placeholder="Email *" title="Por favor dejanos un email" class="required email" aria-required="true" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea id="comment-content" name="content" rows="10" placeholder="Consulta *"></textarea>	
+                                </div>
+                                <div class="col-md-12 margin-20px-bottom">
+                                    <div class="g-recaptcha" data-sitekey="6LcnpoIUAAAAALyS5MQb11vlLxAFyvqrEo_-xJon"></div>
+                                </div>			
+                                <div id="mail-status"></div>
+                                <div class="mfControls col-md-12">
+                                    <button type="submit" class="butn">ENVIAR MENSAJE</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="loader-icon" style="display:none;"><img src="img/icons/loader.gif" /></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end contact form -->
+
+        <!-- start contact info section -->
+        <section class="bg-theme-light">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 sm-margin-20px-bottom">
+                        <div class="services-block padding-45px-tb padding-25px-lr sm-padding-35px-tb sm-padding-20px-lr xs-padding-30px-tb xs-padding-15px-lr last-paragraph-no-margin wow fadeInUp">
+                            <div class="title-box margin-25px-bottom sm-margin-15px-bottom">
+                                <i class="fas fa-map-marker-alt text-theme-color"></i>
+                                <div class="box-circle-large"></div>
+                                <div class="box-circle-small"></div>
+                            </div>
+                            <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">¿Donde estamos?</div>
+                            <p class="center-col">Av. del Libertador 6680, C.A.B.A.
+                                <br>Buenos Aires, ARG</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 sm-margin-20px-bottom wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="services-block padding-45px-tb padding-25px-lr sm-padding-35px-tb sm-padding-20px-lr xs-padding-30px-tb xs-padding-15px-lr last-paragraph-no-margin">
+                            <div class="title-box margin-25px-bottom sm-margin-15px-bottom">
+                                <i class="fas fa-comments text-theme-color"></i>
+                                <div class="box-circle-large"></div>
+                                <div class="box-circle-small"></div>
+                            </div>
+                            <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">¡Hablemos!</div>
+                            <p class="center-col">Teléfono: 11 6308.3711
+                                <br><a href="http://api.whatsapp.com/send?phone=5491163083711" alt="icono de whawsapp" target="_blank">Clic aquí para que hablemos por <i class="fab fa-whatsapp"></i></a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="services-block padding-45px-tb padding-25px-lr sm-padding-35px-tb sm-padding-20px-lr xs-padding-30px-tb xs-padding-15px-lr last-paragraph-no-margin">
+                            <div class="title-box margin-25px-bottom sm-margin-15px-bottom">
+                                <i class="fas fa-envelope text-theme-color"></i>
+                                <div class="box-circle-large"></div>
+                                <div class="box-circle-small"></div>
+                            </div>
+                            <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">E-mail</div>
+                            <p class="center-col"><a href="javascript:void(0)">contacto@emprebit.com</a>
+                                <br><a href="javascript:void(0)">luis@emprebit.com</a></p>
+                        </div>
+                    </div>
+                    <!-- end -->
+                </div>
+
+            </div>
+        </section>
+        <!-- end contact info section -->
+
+        <!-- start footer section -->
+        <footer class="bg-light-gray">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6 sm-margin-30px-bottom">
+
+                        <img alt="footer-logo" class="margin-20px-bottom" src="img/logos/logo-emprebit-footer.png">
+                        
+                        <ul class="footer-list">
+                            <li>
+                                <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-map-marker-alt text-theme-color"></i></span>
+                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">Av. del Libertador 6680, C.A.B.A.</span>
+                            </li>
+                            <li>
+                                <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-mobile-alt text-theme-color"></i></span>
+                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">11 6308.3711</span>
+                            </li>
+                            <li>
+                                <span class="d-inline-block vertical-align-top font-size18"><i class="far fa-envelope text-theme-color"></i></span>
+                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">contacto@emprebit.com</span>
+                            </li>
+                            <li>
+                                <span class="d-inline-block vertical-align-top font-size18"><i class="fas fa-globe text-theme-color"></i></span>
+                                <span class="d-inline-block width-85 vertical-align-top padding-10px-left">www.emprebit.com</span>
+                            </li>
+                        </ul>
+                        <div class="margin-25px-top xs-margin-20px-top footer-social-icons">
+                            <ul>
+                                <li><a href="https://www.facebook.com/emprebit/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://twitter.com/emprebit" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="https://www.youtube.com/channel/UC9i6ZefeI9pvFq83EqNEK_Q" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 sm-margin-30px-bottom">
+                        <h3 class="footer-title-style2">Nuestros servicios</h3>
+                        <div class="row">
+                            <div class="col-md-12 no-padding-right xs-padding-15px-right">
+                                <ul class="footer-list xs-margin-5px-bottom">
+                                    <li><a href="servicios.html">Diseño de páginas web</a></li>
+                                    <li><a href="servicios.html">Desarrollo de tiendas online eCommerce</a></li>
+                                    <li><a href="servicios.html">Mantenimiento web en Wordpress</a></li>
+                                    <li><a href="servicios.html">Diseño Gráfico en General</a></li>
+                                    <li><a href="servicios.html">Marketing Online / Publicidad en Google</a></li>
+                                    <li><a href="servicios.html">Alojamiento Web hosting</a></li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 offset-lg-1">
+                        <h3 class="footer-title-style2">Entregamos factura "C"</h3>
+                        <a id="qr-afip" href="http://qr.afip.gob.ar/?qr=O7T2fUwGVV5GjTbUAHYaNA,," target="_F960AFIPInfo"><img src="../www.afip.gob.ar/images/f960/DATAWEB.jpg" border="0"></a>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="footer-bar xs-font-size13">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center xs-margin-5px-bottom">
+                            <p>© Copyright Emprebit 2015 - 2019. Todos los derechos reservados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end footer section -->
+
+    </div>
+    <!-- end main-wrapper section -->
+
+    <!-- start scroll to top -->
+    <a href="javascript:void(0)" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
+    <!-- end scroll to top -->
+
+    <!-- all js include start -->
+
+    <!-- Java script -->
+    <script src="js/core.min.js"></script>
+    
+    <!-- custom scripts -->
+    <script src="js/main.js"></script>
+
+    <!-- all js include end -->
+
+</body>
+
+
+<!-- Mirrored from emprebit.com/contacto.php by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 27 Sep 2020 02:39:26 GMT -->
+</html>
